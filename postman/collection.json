@@ -1,0 +1,180 @@
+{
+  "info": {
+    "name": "Job Listing Portal API",
+    "_postman_id": "your-postman-id",
+    "description": "API collection for the job listing portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "name": "John Doe",
+                "email": "john.doe@example.com",
+                "password": "password123",
+                "role": "seeker",
+                "location": {
+                  "type": "Point",
+                  "coordinates": [40.712776, -74.005974]
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "email": "john.doe@example.com",
+                "password": "password123"
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Job",
+      "item": [
+        {
+          "name": "Create Job",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "title": "Fix leaky faucet",
+                "description": "Need a plumber to fix a leaky faucet.",
+                "location": {
+                  "type": "Point",
+                  "coordinates": [40.712776, -74.005974]
+                },
+                "compensation": 50
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/jobs/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "jobs", "create"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Application",
+      "item": [
+        {
+          "name": "Apply for Job",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "job": "jobIdHere",
+                "coverLetter": "I am interested in this job because..."
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/applications/apply",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "applications", "apply"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Review",
+      "item": [
+        {
+          "name": "Add Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "reviewee": "userIdHere",
+                "job": "jobIdHere",
+                "rating": 5,
+                "comment": "Great job!"
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/reviews/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reviews", "add"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
