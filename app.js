@@ -14,7 +14,7 @@ connectDB();
 app.use(express.json());
 
 // Routes
-app.use('/api/v1', routes);
+app.use('/v1/api', routes);
 
 // Define a basic route
 app.get('/', (req, res) => {

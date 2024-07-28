@@ -25,3 +25,20 @@ exports.applyForJob = async (req, res) => {
     }
 };
 
+exports.getApplicationsForJob = async (req, res) => {
+    try {
+        const { jobId } = req.params;
+        const applications = await Application.find({ job: jobId }).populate('seeker', 'name email');
+        res.json(applications);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+exports.getAllApplication = async (req, res) => {
+    try {
+        const applications = await Application.find()
+        res.json(applications);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}

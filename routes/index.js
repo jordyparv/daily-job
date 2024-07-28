@@ -7,8 +7,8 @@ const applicationRoutes = require('./application.route');
 const reviewRoutes = require('./review.route');
 
 router.use('/users', userRoutes);
-router.use('/jobs', jobRoutes);
-router.use('/applications', applicationRoutes);
-router.use('/reviews', reviewRoutes);
+router.use('/job', jobRoutes);
+router.use('/application', applicationRoutes);
+router.use('/review', reviewRoutes);
 
 module.exports = router

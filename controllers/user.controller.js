@@ -42,4 +42,24 @@ exports.login = async (req, res) => {
     }
 };
 
+exports.getAllUsers = async (req, res) => {
+    try {
+        let limit = !Number.isNaN(Number(req.query.limit)) ? Number(req.query.limit) : 25
+        const totalUsers = await User.countDocuments()
+        const users = await User.find().limit(limit)
+        let output = {
+            data: users,
+            message: "users fetched successfully",
+            totalUsers
+        }
+        return res.status(200).json(output)
+    } catch (error) {
+        let errorRes =
+        {
+            message: "Interval server issue"
+        }
+        console.error(error.message)
+        return res.status(500).json(errorRes)
+    }
+}
 // Additional user controller methods can be added here
